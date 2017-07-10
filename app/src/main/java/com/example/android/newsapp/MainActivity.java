@@ -80,8 +80,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 // Create a new intent to view the news URI
                 Intent websiteIntent = new Intent(Intent.ACTION_VIEW, newsUri);
 
-                // Send the intent to launch a new activity
-                startActivity(websiteIntent);
+                // Verify that the intent will resolve to an activity
+                if (websiteIntent.resolveActivity(getPackageManager()) != null) {
+                    //Send the intent to launch a new activity
+                    startActivity(websiteIntent);
+                }
             }
         });
 
